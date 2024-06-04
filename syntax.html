@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>JavaScript Sets</h3>
+    <a
+      href="https://www.geeksforgeeks.org/difference-between-a-set-and-an-array/"
+      >Difference between set and array</a
+    >
+    <p id="set"></p>
+
+    <h3>JavaScript Classes</h3>
+    <p id="ballClass"></p>
+
+    <h3>JavaScript Promsies</h3>
+    <p id="promise"></p>
+
+    <script>
+      const balls = new Set();
+      balls.add("whiteBall");
+      balls.add("redBall");
+      balls.add("yellowBall");
+      balls.add("blueBall");
+
+      setDisplay = "";
+      // Display the Size
+      for (ball of balls) setDisplay += ball + ", ";
+      document.getElementById("set").innerHTML = setDisplay;
+
+      // JS Classes
+      class Ball {
+        constructor(color, number) {
+          this.color = color;
+          this.number = number;
+        }
+      }
+      const whiteBall = new Ball("white", 0);
+      const blackBall = new Ball("black", 8);
+      document.getElementById("ballClass").innerHTML =
+        whiteBall.color + " " + whiteBall.number;
+
+      // JS Promise
+      timeout = 5000;
+      const myPromise = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          resolve("Hello world!");
+        }, timeout);
+      });
+      myPromise.then(function (value) {
+        document.getElementById("promise").innerHTML = value;
+      });
+
+      //Object GroupBy
+    </script>
+  </body>
+</html>
