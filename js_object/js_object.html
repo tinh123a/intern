@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Creating a JS Object</h2>
+    <h3>Using an Object Literal</h3>
+    <p id="1"></p>
+
+    <h3>Object Constructor Functions</h3>
+    <p id="2"></p>
+
+    <h3>JavaScript Object Methods</h3>
+    <h4>Object.assign(target, source) and Object.entries()</h4>
+    <p id="3"></p>
+    <h4>Object.fromEntries()</h4>
+    <p id="4"></p>
+    <h4>Object.values()</h4>
+    <p id="5"></p>
+    <p>
+      Object.values() only return value, Object.entries() return property name
+      and values
+    </p>
+    <h4>JavaScript Object.groupBy()</h4>
+    <p id="6"></p>
+    <p id="7"></p>
+    <h4>Object.keys()</h4>
+    <p id="8"></p>
+    <script>
+      const ball = {};
+      ball.color = "white";
+      ball.number = 0;
+
+      // const ball = new Object()
+
+      document.getElementById("1").innerHTML =
+        "The ball has color: " + ball.color + " and number:  " + ball.number;
+
+      //Object Constructor Functions
+      function Computer(brand, ram, cpu) {
+        this.brand = brand;
+        this.ram = ram;
+        this.cpu = cpu;
+      }
+      const computer1 = new Computer("Asus", 16, "AMD");
+      const computer2 = new Computer("Acer", 8, "Intel");
+      document.getElementById("2").innerHTML =
+        "The brand computer is " +
+        computer1.brand +
+        " has " +
+        computer1.ram +
+        " gb ";
+
+      //JavaScript Object Methods
+      //object.assign and object.entries
+      const phone1 = {
+        brand: "Apple",
+        ram: 4,
+        size: 5.5,
+        memory: 128,
+      };
+      const phone2 = { brand: "Samsung" };
+      Object.assign(phone1, phone2);
+      document.getElementById("3").innerHTML = Object.entries(phone1);
+
+      //Object.fromEntries()
+      const fruits = [
+        ["apples", 300],
+        ["pears", 900],
+        ["bananas", 500],
+      ];
+      const myObject = Object.fromEntries(fruits);
+      document.getElementById("4").innerHTML = myObject.bananas;
+
+      //Object.values()
+      document.getElementById("5").innerHTML = Object.values(phone1);
+      //Object.groupBy()
+      const fruits2 = [
+        { name: "apples", quantity: 300 },
+        { name: "bananas", quantity: 500 },
+        { name: "oranges", quantity: 200 },
+        { name: "kiwi", quantity: 150 },
+      ];
+      function greaterThan200({ quantity }) {
+        return quantity > 200 ? "ok" : "low";
+      }
+      const resultGroupBy = Object.groupBy(fruits2, greaterThan200);
+      let text = "These fruits are Ok: <br>";
+      for (let [x, y] of resultGroupBy.ok.entries()) {
+        text += y.name + " " + y.quantity + "<br>";
+      }
+
+      let text2 = "These fruits are Low: <br>";
+      for (let [x, y] of resultGroupBy.low.entries()) {
+        text2 += y.name + " " + y.quantity + "<br>";
+      }
+      document.getElementById("6").innerHTML = text;
+      document.getElementById("7").innerHTML = text2;
+
+      //Object.keys()
+      const keys = Object.keys(phone1);
+      document.getElementById("8").innerHTML = keys;
+    </script>
+  </body>
+</html>

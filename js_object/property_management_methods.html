@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Property Management Methods</h1>
+    <h2>JavaScript Object.defineProperty()</h2>
+    <p id="1"></p>
+    <h2>JavaScript getOwnProperyNames() == Object.keys()</h2>
+    <h2>add getter and setter by Object.defineProperty()</h2>
+    <p id="2"></p>
+    <script>
+      const person = {
+        firstName: "Han Quoc",
+        lastName: "Trung",
+        married: false,
+      };
+      Object.defineProperty(person, "age", { value: "22" });
+      document.getElementById("1").innerHTML = person.age;
+
+      Object.defineProperty(person, "fullName", {
+        get: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      });
+      document.getElementById("2").innerHTML = person.fullName;
+    </script>
+  </body>
+</html>
