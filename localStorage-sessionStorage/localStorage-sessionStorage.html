@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage vs Session Storage</title>
+  </head>
+  <body>
+    <img src="./cI5kT.jpg" alt="" />
+    <div class="">
+      <input id="localInput" type="text" /><button
+        onclick="createLocalStorage()"
+        id="localBtn"
+      >
+        Local Storage
+      </button>
+      <p id="localResult"></p>
+    </div>
+    <div class="">
+      <input type="text" id="sessionInput" /><button
+        onclick="createSessionStorage()"
+        id="sessionBtn"
+      >
+        Session Storage
+      </button>
+      <p id="sessionResult"></p>
+    </div>
+
+    <script>
+      const localInput = document.getElementById("localInput");
+      const sessionInput = document.getElementById("sessionInput");
+      const localResult = document.getElementById("localResult");
+      const sessionResult = document.getElementById("sessionResult");
+
+      function createLocalStorage() {
+        let localValue = localInput.value;
+        if (!localValue) {
+          alert("Empty");
+        } else {
+          localStorage.setItem("myKey", localValue);
+        }
+      }
+      localResult.textContent =
+        "My local storage key: " + localStorage.getItem("myKey");
+      function createSessionStorage() {
+        let sessionValue = sessionInput.value;
+        if (!sessionValue) {
+          alert("Empty");
+        } else {
+          sessionStorage.setItem("myKey", sessionValue);
+        }
+      }
+      sessionResult.textContent =
+        "My session storage key: " + sessionStorage.getItem("myKey");
+    </script>
+  </body>
+</html>
