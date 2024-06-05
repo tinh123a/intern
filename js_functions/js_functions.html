@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>bind() method</h2>
+    <p id="bind"></p>
+    <h2>Closure</h2>
+    <script>
+      const person = {
+        fullName: function (city, country) {
+          return (
+            this.firstName + " " + this.lastName + "," + city + "," + country
+          );
+        },
+      };
+
+      const person1 = {
+        firstName: "John",
+        lastName: "Doe",
+      };
+      console.info("----apply() method-----");
+      console.log(person.fullName.apply(person1, ["Oslo", "Norway"]));
+      console.info("----call() method-----");
+      console.log(person.fullName.call(person1, "Oslo", "Norway"));
+      console.info("---bind() method---");
+      document.getElementById("bind").innerHTML =
+        person.fullName.bind(person1)();
+
+      function Car() {
+        let speed = 0;
+        function running() {
+          while (speed < 100) {
+            speed++;
+            console.log("Car is running with " + speed + " km/h");
+          }
+        }
+        return running();
+      }
+
+      var running = Car();
+    </script>
+  </body>
+</html>
