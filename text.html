@@ -16,8 +16,37 @@
     stable sort
 </h1>
 
+<p id = 'table-sort'></p>
 <script>
-    cost
+    const myArray= [
+        {name:"X00",price:160 },
+        {name:"X01",price:100 },
+        {name:"X02",price:100 },
+        {name:"X03",price:100 },
+        {name:"X04",price:110 },
+        {name:"X05",price:110 },
+        {name:"X06",price:110 },
+        {name:"X07",price:110 },
+        {name:"X08",price:120 },
+        {name:"X09",price:120 },
+        {name:"X10",price:120 },
+        {name:"X11",price:120 },
+        {name:"X12",price:130 }
+    ]
+    myArray.sort((p1,p2) => {
+        if(p1.price > p2.price) return -1;
+        if(p2.price > p1.price) return 1;
+        return 0;
+    });
+
+    let txt = '';
+    myArray.forEach(myFunsion);
+
+    function myFunsion(value) {
+        txt += value.name + value.price + "<br>"
+    }
+    document.getElementById("table-sort").innerHTML = txt;
 </script>
+
 </body>
 </html>
