@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bmi.css" />
+    <title>BMI-Calculator</title>
+  </head>
+  <body>
+    <h1>BMI-Calculator</h1>
+    <div class="bmi-container">
+      <div class="height-container">
+        <label for="">Height in Cm</label>
+        <input id="height" type="number" />
+      </div>
+      <div class="weight-container">
+        <label for="">Weight in Kg</label>
+        <input id="weight" type="number" />
+      </div>
+      <button id="calculate">Calculate</button>
+      <p>Your Result: <strong id="result"></strong></p>
+      <p id="status"></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("weight")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            BMICalculator();
+          }
+        });
+      document
+        .getElementById("calculate")
+        .addEventListener("click", BMICalculator);
+      function BMICalculator() {
+        const height = document.getElementById("height").value / 100;
+        const weight = document.getElementById("weight").value;
+        const rate = document.getElementById("status");
+        let bmi = Math.round(weight / (height * height));
+        const result = document.getElementById("result");
+        result.innerText = bmi + " " + checkBMIRate(bmi)[1];
+        result.style.color = checkBMIRate(bmi)[0];
+      }
+      function checkBMIRate(bmi) {
+        if (bmi < 18.5) return ["blue", "Underweight"];
+        if (bmi > 35) return ["red", "Extremly Obese"];
+        if (bmi >= 18.5 && bmi <= 24.9) {
+          return ["green", "Normal"];
+        } else if (bmi >= 25 && bmi <= 29.9) {
+          return ["yellow", "Overweight"];
+        } else if (bmi >= 30 && bmi <= 34.9) {
+          return ["orange", "Obese"];
+        }
+      }
+    </script>
+  </body>
+</html>
